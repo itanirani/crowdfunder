@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects
-  has_many :backed_projects, class_name: "Project", foreign_key: :backer_id
+  has_many :donations
+  has_many :backed_projects, class_name: "Donation"
 end

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924163155) do
+ActiveRecord::Schema.define(version: 20140924164703) do
+
+  create_table "donations", force: true do |t|
+    t.integer "amount"
+    t.integer "backer_id"
+    t.integer "user_id"
+    t.integer "project_id"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"
