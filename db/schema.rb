@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924164703) do
+ActiveRecord::Schema.define(version: 20140924173042) do
 
   create_table "donations", force: true do |t|
     t.integer "amount"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20140924164703) do
     t.integer  "backer_id"
   end
 
+  create_table "rewards", force: true do |t|
+    t.text     "description"
+    t.integer  "amount"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -45,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140924164703) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
