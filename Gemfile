@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'quiet_assets'
+gem "cocoon"
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
