@@ -24,7 +24,7 @@
     <%= f.text_area :goal %>
   </div>
   
-  <h3>Tasks</h3>
+  <h3>Rewards</h3>
   <div id='rewards'>
     <%= f.fields_for :rewards do |reward| %>
       <%= render 'reward_fields', :f => reward %>
