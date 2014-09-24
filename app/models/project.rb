@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   
   has_many :rewards
 
-  accepts_nested_attributes_for :rewards
+  accepts_nested_attributes_for :rewards, :allow_destroy => true
 
   # validates :name, presence: true, uniqueness: true
   # validates :description, presence: true
