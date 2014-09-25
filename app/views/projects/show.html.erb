@@ -10,5 +10,13 @@
   <%= @project.description %>
 </p>
 
+<p>
+  <strong>Rewards</strong>
+  <% @project.rewards.each do |reward| %>
+    <p><%= reward.description %></p>
+    <p><%= reward.amount %></p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
