@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def choose_reward
     @reward = Reward.find(params[:reward])
     current_user.donations << Donation.create(amount: @reward.amount, user_id: current_user.id, project_id: @project.id)
+    current_user.rewards << @reward
     redirect_to :root, notice: "You have chosen project and reward"
   end
 

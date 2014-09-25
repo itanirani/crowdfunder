@@ -1,2 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.email  %></h1>
+<h2>Backed projects</h2>
+  <% @user.backed_projects.each do |proj| %>
+    <%= proj.project.name %>
+  <% end %>
+
+<h3>Selected rewards</h3>
+  <% @user.rewards.each do |reward| %>
+    <%= reward.description %><br>
+    <%= reward.amount %>
+  <% end %>

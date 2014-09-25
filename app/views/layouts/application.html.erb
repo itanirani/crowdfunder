@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to 'Home', :root %>
   <% if user_signed_in? %>
     <%= link_to current_user.email, current_user %>
     <%= link_to 'Edit account', edit_user_registration_path %>
