@@ -11,6 +11,16 @@
 </p>
 
 <p>
+  <strong>Funding goal:</strong>
+  <%= @project.goal %>
+</p>
+
+<p>
+  <strong>Still need :</strong>
+  <%= @need_money %>
+</p>
+
+<p>
   <strong>Rewards</strong>
   <% @project.rewards.each do |reward| %>
     <p><%= link_to reward.description, choose_reward_project_path(reward: reward) %></p>

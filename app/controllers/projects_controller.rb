@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def choose_reward
     @reward = Reward.find(params[:reward])
-    current_user.donations << Donation.create(amount: @reward.amount, user_id: current_user.id, project_id: @project.id)
+    current_user.donations << Donation.create(amount: @reward.amount, project_id: @project.id)
     current_user.rewards << @reward
     redirect_to :root, notice: "You have chosen project and reward"
   end
@@ -17,6 +17,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    total = 0
+    @project.donations.to_a.each {|d| total+= d.amount}
+    @need_money = @project.goal - total
   end
 
   # GET /projects/new
