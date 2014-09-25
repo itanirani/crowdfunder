@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'pages/index'
 
   devise_for :users
-  resources :projects
+  resources :projects do
+    member do 
+      get 'choose_reward'
+    end
+  end
 
   get 'users/:id' => 'users#show', as: 'user'
   # The priority is based upon order of creation: first created -> highest priority.

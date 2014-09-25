@@ -1,8 +1,14 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :choose_reward]
 
   # GET /projects
   # GET /projects.json
+  def choose_reward
+    @reward = Reward.find(params[:reward])
+    current_user.donations << Donation.create(amount: @reward.amount, user_id: current_user.id, project_id: @project.id)
+    redirect_to :root, notice: "You have chosen project and reward"
+  end
+
   def index
     @projects = Project.all
   end
@@ -70,6 +76,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, rewards_attributes: [:id, :description, :amount, :_destroy])
+      params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, :reward, rewards_attributes: [:id, :description, :amount, :_destroy])
     end
 end

@@ -13,7 +13,7 @@
 <p>
   <strong>Rewards</strong>
   <% @project.rewards.each do |reward| %>
-    <p><%= reward.description %></p>
+    <p><%= link_to reward.description, choose_reward_project_path(reward: reward) %></p>
     <p><%= reward.amount %></p>
   <% end %>
 </p>
