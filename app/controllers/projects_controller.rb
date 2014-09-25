@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @project.rewards.build
   end
 
   # POST /projects
