@@ -11,4 +11,9 @@ class Project < ActiveRecord::Base
   # validates :description, presence: true
   # validates :goal, presence: true, numericality: true
   # validates :start_date, presence: true
+
+  def distance_to_goal
+  	goal - donations.sum(:amount)
+  	# goal - donations.to_a.inject{|total, d| total += d.amount}
+  end
 end

@@ -17,17 +17,21 @@
 
 <p>
   <strong>Still need :</strong>
-  <p class="need_money">  
-    <%= @need_money %>
+  <p id="need_money">  
+    <%= @project.distance_to_goal %>
   </p>
 </p>
 
 <p>
-  <strong>Rewards</strong>
-  <% @project.rewards.each do |reward| %>
-    <p><%= link_to reward.description, choose_reward_project_path(reward: reward) %></p>
-    <p><%= reward.amount %></p>
-  <% end %>
+  <strong >Rewards</strong>
+  <div id="reward-container">
+    <% @project.rewards.each do |reward| %>
+      <div class="reward" data-reward-id="<%= reward.id %>">
+        <p><%= link_to reward.description, choose_reward_project_path(reward: reward) , :class => "donate", :remote => true %></p>
+        <p class="reward-amount" ><%= reward.amount %></p>
+      </div>
+    <% end %>
+  </div>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

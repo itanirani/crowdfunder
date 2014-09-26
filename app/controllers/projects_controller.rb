@@ -9,7 +9,12 @@ class ProjectsController < ApplicationController
     current_user.rewards << @reward
 
 
-    redirect_to :root, notice: "You have chosen project and reward"
+    
+    respond_to do |format|
+      format.js 
+      format.html { redirect_to :root, notice: "You have chosen project and reward" }
+    end 
+
     
     
   end
@@ -21,9 +26,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    total = 0
-    @project.donations.to_a.each {|d| total+= d.amount}
-    @need_money = @project.goal - total
+    respond_to do |format|
+      format.js 
+      format.html
+    end 
   end
 
   # GET /projects/new
@@ -87,4 +93,4 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, :reward, rewards_attributes: [:id, :description, :amount, :_destroy])
     end
-end
+  end
