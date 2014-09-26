@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :rewards, :allow_destroy => true
 
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/no_image.jpg"
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # validates :name, presence: true, uniqueness: true
   # validates :description, presence: true
   # validates :goal, presence: true, numericality: true

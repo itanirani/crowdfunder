@@ -1,49 +1,54 @@
 <%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<% if @project.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @project.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :goal %><br>
-    <%= f.text_area :goal %>
-  </div>
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+</div>
+<div class="field">
+  <%= f.label :goal %><br>
+  <%= f.text_area :goal %>
+</div>
 
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :finish_date %><br>
-    <%= f.datetime_select :finish_date %>
-  </div>
-  
-  <h3>Rewards</h3>
-  <div id='rewards'>
-    <%= f.fields_for :rewards do |reward| %>
-      <%= render 'reward_fields', :f => reward %>
+<div class="field">
+  <%= f.label :start_date %><br>
+  <%= f.datetime_select :start_date %>
+</div>
+<div class="field">
+  <%= f.label :finish_date %><br>
+  <%= f.datetime_select :finish_date %>
+</div>
+
+<h3>Rewards</h3>
+<div id='rewards'>
+  <%= f.fields_for :rewards do |reward| %>
+    <%= render 'reward_fields', :f => reward %>
     <div class='links'>
       <%= link_to_add_association 'add reward', f, :rewards %>
     </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :image %><br>
+      <%= f.file_field :image, class: "form-control" %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

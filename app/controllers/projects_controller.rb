@@ -8,14 +8,11 @@ class ProjectsController < ApplicationController
     current_user.donations << Donation.create(amount: @reward.amount, project_id: @project.id)
     current_user.rewards << @reward
 
-
-    
     respond_to do |format|
       format.js 
       format.html { redirect_to :root, notice: "You have chosen project and reward" }
     end 
 
-    
     
   end
 
@@ -40,7 +37,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project.rewards.build
+    @project = Project.find(params[:id])
   end
 
   # POST /projects
@@ -91,6 +88,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, :reward, rewards_attributes: [:id, :description, :amount, :_destroy])
+      params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, :image, :reward, rewards_attributes: [:id, :description, :amount, :_destroy])
     end
   end

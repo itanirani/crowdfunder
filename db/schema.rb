@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925160829) do
+ActiveRecord::Schema.define(version: 20140926193228) do
 
   create_table "donations", force: true do |t|
     t.integer "amount"
@@ -25,11 +25,15 @@ ActiveRecord::Schema.define(version: 20140925160829) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "goal",        default: 0
+    t.integer  "goal",               default: 0
     t.datetime "start_date"
     t.datetime "finish_date"
     t.integer  "user_id"
     t.integer  "backer_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "rewards", force: true do |t|
